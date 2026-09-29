@@ -7,7 +7,7 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 PINECONE_INDEX_NAME = os.getenv(
     "PINECONE_INDEX_NAME",
-    "agentic-ai-index-free"
+    "agentic-ai-index-fastembed"
 )
 
 PDF_SHARE_URL = "https://drive.google.com/file/d/15VLphKcY23_fpYxN62UEQRri_psRVfP9/view?usp=sharing"

@@ -3,7 +3,7 @@ import re
 from typing import List, TypedDict
 
 from langchain_groq import ChatGroq
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import FastEmbedEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from langgraph.graph import END, START, StateGraph
 
@@ -24,10 +24,9 @@ def build_rag_graph():
     # -----------------------------
     # Embedding model
     # -----------------------------
-    embeddings = HuggingFaceEmbeddings(
-        model_name=config.EMBEDDING_MODEL
-    )
-
+    embeddings = FastEmbedEmbeddings(
+       model_name="BAAI/bge-small-en-v1.5"
+)
     # -----------------------------
     # Pinecone vector store
     # -----------------------------

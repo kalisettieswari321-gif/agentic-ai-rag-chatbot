@@ -5,7 +5,7 @@ import gdown
 from pinecone import Pinecone, ServerlessSpec
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import FastEmbedEmbeddings
 from langchain_pinecone import PineconeVectorStore
 
 from src import config
@@ -80,9 +80,9 @@ def run_ingestion():
 
     create_index_if_needed()
 
-    embeddings = HuggingFaceEmbeddings(
-        model_name=config.EMBEDDING_MODEL
-    )
+    embeddings = FastEmbedEmbeddings(
+       model_name="BAAI/bge-small-en-v1.5"
+)
 
     PineconeVectorStore.from_documents(
         documents=chunks,

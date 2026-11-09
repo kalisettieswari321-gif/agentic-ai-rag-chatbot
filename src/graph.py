@@ -13,6 +13,7 @@ from src import config
 class AgentState(TypedDict):
     question: str
     context: List[str]
+    sources: List[dict]
     retrieval_scores: List[float]
     answer: str
     grounded: bool
@@ -25,8 +26,9 @@ def build_rag_graph():
     # Embedding model
     # -----------------------------
     embeddings = FastEmbedEmbeddings(
-       model_name="BAAI/bge-small-en-v1.5"
-)
+        model_name=config.EMBEDDING_MODEL
+    )
+
     # -----------------------------
     # Pinecone vector store
     # -----------------------------
@@ -54,14 +56,22 @@ def build_rag_graph():
         )
 
         context = []
+        sources = []
         scores = []
 
         for doc, score in results:
             context.append(doc.page_content)
+            page = doc.metadata.get("page")
+            sources.append({
+                "source": doc.metadata.get("source"),
+                "page": int(page) if page is not None else None,
+                "score": round(float(score), 3),
+            })
             scores.append(float(score))
 
         return {
             "context": context,
+            "sources": sources,
             "retrieval_scores": scores
         }
 
@@ -91,7 +101,8 @@ def build_rag_graph():
         return {
             "answer": config.REFUSAL_MESSAGE,
             "grounded": False,
-            "score": 0.0
+            "score": 0.0,
+            "sources": []
         }
 
     # -----------------------------
@@ -140,7 +151,7 @@ ANSWER:
         }
 
     # -----------------------------
-    # GROUNDEDNESS GRADING
+    # GROUNDEDNESS GRADING + GATE
     # -----------------------------
     def grade_node(state: AgentState):
 
@@ -154,13 +165,15 @@ ANSWER:
             else 0.0
         )
 
-        # If the answer is a refusal,
-        # confidence must be zero.
+        # If the model itself refused,
+        # confidence must be zero and no sources are shown.
         if config.REFUSAL_MESSAGE.lower() in answer.lower():
 
             return {
+                "answer": config.REFUSAL_MESSAGE,
                 "grounded": False,
-                "score": 0.0
+                "score": 0.0,
+                "sources": []
             }
 
         context_str = "\n\n---\n\n".join(
@@ -226,7 +239,15 @@ ANSWER:
             min(1.0, groundedness)
         )
 
-        grounded = groundedness >= 0.7
+        # GATE: weakly supported answers are never shown.
+        if groundedness < config.MIN_GROUNDEDNESS:
+
+            return {
+                "answer": config.REFUSAL_MESSAGE,
+                "grounded": False,
+                "score": 0.0,
+                "sources": []
+            }
 
         # Assignment confidence formula
         final_score = round(
@@ -243,7 +264,7 @@ ANSWER:
         )
 
         return {
-            "grounded": grounded,
+            "grounded": True,
             "score": final_score
         }
 

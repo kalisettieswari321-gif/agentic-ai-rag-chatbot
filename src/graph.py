@@ -1,3 +1,4 @@
+
 import json
 import re
 from typing import List, TypedDict
@@ -201,37 +202,24 @@ ANSWER:
 {answer}
 """
 
-        try:
+        groundedness = None
 
-            raw = llm.invoke(
-                grader_prompt
-            ).content.strip()
+        # Retry only when the grader returns blank or unparseable output.
+        # API errors (e.g. rate limits) are NOT caught here: they propagate
+        # so the API layer can return a 503 instead of a false refusal.
+        for _ in range(3):
+            raw = llm.invoke(grader_prompt).content.strip()
+            match = re.search(r"\{.*\}", raw, re.DOTALL)
+            if not match:
+                continue
+            try:
+                groundedness = float(json.loads(match.group(0))["groundedness"])
+                break
+            except (ValueError, KeyError, TypeError):
+                continue
 
-            match = re.search(
-                r"\{.*\}",
-                raw,
-                re.DOTALL
-            )
-
-            if match:
-
-                data = json.loads(
-                    match.group(0)
-                )
-
-                groundedness = float(
-                    data.get(
-                        "groundedness",
-                        0.0
-                    )
-                )
-
-            else:
-                groundedness = 0.5
-
-        except Exception:
-
-            groundedness = 0.5
+        if groundedness is None:
+            groundedness = 0.0
 
         # Keep value in valid range
         groundedness = max(

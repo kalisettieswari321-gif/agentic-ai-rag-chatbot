@@ -1,0 +1,218 @@
+[
+  {
+    "label": "in",
+    "question": "What is Agentic AI?",
+    "best_retrieval_score": 0.848,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "What are the key components of Agentic AI?",
+    "best_retrieval_score": 0.887,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "What are the types and categories of agents?",
+    "best_retrieval_score": 0.748,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "What is the role of planning in agentic systems?",
+    "best_retrieval_score": 0.818,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "What are some applications of Agentic AI?",
+    "best_retrieval_score": 0.855,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "How does Agentic AI differ from traditional AI?",
+    "best_retrieval_score": 0.829,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "What is the role of memory in agentic systems?",
+    "best_retrieval_score": 0.788,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "What are the benefits of Agentic AI?",
+    "best_retrieval_score": 0.825,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "What are the challenges or risks of Agentic AI?",
+    "best_retrieval_score": 0.833,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "How do LLMs differ from AI agents?",
+    "best_retrieval_score": 0.859,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "What is multi-agent collaboration?",
+    "best_retrieval_score": 0.773,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "What is the role of reasoning in AI agents?",
+    "best_retrieval_score": 0.798,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "How do AI agents make decisions?",
+    "best_retrieval_score": 0.79,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "What are the future trends of Agentic AI?",
+    "best_retrieval_score": 0.826,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "in",
+    "question": "How can organizations adopt Agentic AI?",
+    "best_retrieval_score": 0.825,
+    "refused": false,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "What is the capital of France?",
+    "best_retrieval_score": 0.402,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "Who won the FIFA World Cup in 2018?",
+    "best_retrieval_score": 0.464,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "Give me a recipe for chicken biryani.",
+    "best_retrieval_score": 0.472,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "Who is the current president of the United States?",
+    "best_retrieval_score": 0.401,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "What is the boiling point of water?",
+    "best_retrieval_score": 0.468,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "Write a Python function to reverse a list.",
+    "best_retrieval_score": 0.533,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "What is the tallest mountain in the world?",
+    "best_retrieval_score": 0.394,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "How do I fine-tune GPT-4 on my own data?",
+    "best_retrieval_score": 0.603,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "What is the price of Pinecone's paid plan?",
+    "best_retrieval_score": 0.498,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "Explain the mathematics of the transformer attention mechanism.",
+    "best_retrieval_score": 0.687,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "Who founded OpenAI?",
+    "best_retrieval_score": 0.665,
+    "refused": true,
+    "correct": true,
+    "error": null
+  },
+  {
+    "label": "out",
+    "question": "Which GPU is best for training neural networks?",
+    "best_retrieval_score": 0.582,
+    "refused": true,
+    "correct": true,
+    "error": null
+  }
+]

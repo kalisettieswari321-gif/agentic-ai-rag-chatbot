@@ -25,3 +25,5 @@ Thumbs.db
 # Local data
 *.tmp
 last_run.txt
+
+.pytest_cache/
